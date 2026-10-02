@@ -1,0 +1,147 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-display: "Fraunces", "IBM Plex Sans Arabic", serif;
+  --font-sans: "Manrope", "IBM Plex Sans Arabic", system-ui, sans-serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-sand: var(--sand);
+  --color-turquoise: var(--turquoise);
+  --color-turquoise-soft: var(--turquoise-soft);
+  --color-navy: var(--navy);
+  --color-navy-foreground: var(--navy-foreground);
+  --color-ivory: var(--ivory);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+}
+
+:root {
+  --radius: 1rem;
+  --ivory: oklch(0.966 0.012 85);
+  --sand: oklch(0.83 0.05 75);
+  --navy: oklch(0.23 0.05 250);
+  --navy-foreground: oklch(0.97 0.01 85);
+  --gold: oklch(0.74 0.09 80);
+  --gold-soft: oklch(0.92 0.04 82);
+  --turquoise: oklch(0.62 0.09 195);
+  --turquoise-soft: oklch(0.93 0.035 195);
+  --success: oklch(0.6 0.12 160);
+  --warning: oklch(0.7 0.14 60);
+
+  --background: var(--ivory);
+  --foreground: var(--navy);
+  --card: oklch(1 0 0);
+  --card-foreground: var(--navy);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--navy);
+  --primary: var(--navy);
+  --primary-foreground: var(--navy-foreground);
+  --secondary: oklch(0.94 0.02 80);
+  --secondary-foreground: var(--navy);
+  --muted: oklch(0.94 0.015 80);
+  --muted-foreground: oklch(0.48 0.03 250);
+  --accent: var(--gold);
+  --accent-foreground: var(--navy);
+  --destructive: oklch(0.58 0.2 27);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.89 0.02 80);
+  --input: oklch(0.89 0.02 80);
+  --ring: var(--gold);
+
+  --gradient-hero: radial-gradient(1200px 600px at 85% -10%, oklch(0.93 0.04 195 / 0.7), transparent 60%),
+    radial-gradient(900px 500px at 0% 10%, oklch(0.92 0.05 82 / 0.8), transparent 60%),
+    linear-gradient(180deg, var(--ivory), oklch(0.98 0.008 85));
+  --gradient-navy: linear-gradient(135deg, oklch(0.2 0.05 250), oklch(0.28 0.06 235));
+  --gradient-gold: linear-gradient(120deg, oklch(0.68 0.1 75), oklch(0.82 0.08 85), oklch(0.68 0.1 75));
+  --shadow-luxe: 0 1px 0 oklch(1 0 0 / 0.8) inset, 0 20px 50px -24px oklch(0.23 0.05 250 / 0.25);
+  --shadow-float: 0 30px 80px -30px oklch(0.23 0.05 250 / 0.45);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+  h1, h2, h3, .font-display { font-family: var(--font-display); letter-spacing: -0.02em; }
+  [dir="rtl"] body, [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] .font-display {
+    font-family: "IBM Plex Sans Arabic", system-ui, sans-serif;
+    letter-spacing: 0;
+  }
+}
+
+@utility bg-hero { background: var(--gradient-hero); }
+@utility bg-navy-gradient { background: var(--gradient-navy); color: var(--navy-foreground); }
+@utility text-gold-gradient {
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+@utility shadow-luxe { box-shadow: var(--shadow-luxe); }
+@utility shadow-float { box-shadow: var(--shadow-float); }
+@utility card-luxe {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-luxe);
+}
+@utility geo-pattern {
+  background-image:
+    linear-gradient(45deg, oklch(0.74 0.09 80 / 0.08) 25%, transparent 25%),
+    linear-gradient(-45deg, oklch(0.74 0.09 80 / 0.08) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, oklch(0.74 0.09 80 / 0.08) 75%),
+    linear-gradient(-45deg, transparent 75%, oklch(0.74 0.09 80 / 0.08) 75%);
+  background-size: 28px 28px;
+  background-position: 0 0, 0 14px, 14px -14px, -14px 0;
+}
+@utility eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--turquoise);
+}
+@utility fade-up { animation: fadeUp 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+@utility shimmer-line {
+  background: linear-gradient(90deg, transparent, oklch(0.74 0.09 80 / 0.6), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s linear infinite;
+}
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+@keyframes pulseRing { 0% { box-shadow: 0 0 0 0 oklch(0.62 0.09 195 / 0.5); } 100% { box-shadow: 0 0 0 14px transparent; } }
+@utility pulse-ring { animation: pulseRing 1.6s ease-out infinite; }
